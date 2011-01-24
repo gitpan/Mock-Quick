@@ -7,11 +7,11 @@ lib/Mock/Quick/Util.pm
 lib/Object/Quick.pm
 MANIFEST			This list of files
 MANIFEST.SKIP
+README
 t/Class.t
 t/Method.t
 t/Mock-Quick.t
 t/Object-Quick.t
 t/Object.t
 t/Util.t
-README
 META.yml
