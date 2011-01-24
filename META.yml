@@ -1,0 +1,40 @@
+---
+abstract: "Quickly mock objects and classes, even temporarily replace them,\nside-effect free."
+author:
+  - 'Chad Granum <exodist7@gmail.com>'
+build_requires:
+  Fennec::Lite: 0.004
+  Test::Exception: 0.29
+  Test::Simple: 0.88
+configure_requires:
+  Module::Build: 0.36
+generated_by: 'Module::Build version 0.3603'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Mock-Quick
+provides:
+  Mock::Quick:
+    file: lib/Mock/Quick.pm
+    version: 1.000_1
+  Mock::Quick::Class:
+    file: lib/Mock/Quick/Class.pm
+  Mock::Quick::Method:
+    file: lib/Mock/Quick/Method.pm
+  Mock::Quick::Object:
+    file: lib/Mock/Quick/Object.pm
+  Mock::Quick::Util:
+    file: lib/Mock/Quick/Util.pm
+  Object::Quick:
+    file: lib/Object/Quick.pm
+requires:
+  Carp: 0
+  Exporter::Declare: 0.103
+  Scalar::Util: 0
+resources:
+  bugtracker: http://github.com/exodist/Object-Quick/issues
+  homepage: http://open-exodus.net/projects/Object-Quick
+  license: http://dev.perl.org/licenses/
+  repository: http://github.com/exodist/Object-Quick
+version: 1.000_1
