@@ -7,7 +7,7 @@ use Mock::Quick::Object;
 use Mock::Quick::Method;
 use Mock::Quick::Util ();
 
-our $VERSION = '1.000';
+our $VERSION = '1.001';
 
 default_export qobj      => sub { Mock::Quick::Object->new( @_ )    };
 default_export qclass    => sub { Mock::Quick::Class->new( @_ )     };
@@ -165,6 +165,16 @@ Define a method for an L<Mock::Quick::Object> instance.
 =head1 AUTHORS
 
 Chad Granum L<exodist7@gmail.com>
+
+=head1 CONTRIBUTORS
+
+Contributors are listed as authors in modules they have touched.
+
+=over 4
+
+=item Glen Hinkle L<glen@empireenterprises.com>
+
+=back
 
 =head1 COPYRIGHT
 

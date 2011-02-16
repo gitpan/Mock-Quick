@@ -8,7 +8,7 @@ build_requires:
   Test::Simple: 0.88
 configure_requires:
   Module::Build: 0.36
-generated_by: 'Module::Build version 0.3607'
+generated_by: 'Module::Build version 0.3624'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -17,7 +17,7 @@ name: Mock-Quick
 provides:
   Mock::Quick:
     file: lib/Mock/Quick.pm
-    version: 1.000
+    version: 1.001
   Mock::Quick::Class:
     file: lib/Mock/Quick/Class.pm
   Mock::Quick::Method:
@@ -37,4 +37,4 @@ resources:
   homepage: http://open-exodus.net/projects/Object-Quick
   license: http://dev.perl.org/licenses/
   repository: http://github.com/exodist/Object-Quick
-version: 1.000
+version: 1.001

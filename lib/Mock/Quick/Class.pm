@@ -89,28 +89,39 @@ sub _is_sub_ref {
 sub override {
     my $self = shift;
     my $package = $self->package;
-    my ( $name, $orig_value ) = @_;
-    my $real_value = _is_sub_ref( $orig_value )
-        ? $orig_value
-        : sub { $orig_value };
+    my %pairs = @_;
+    my @originals;
 
-    my $original = $package->can( $name );
-    $self->{$name} ||= $original;
-    inject( $package, $name, $real_value );
-    return $original;
+    for my $name ( keys %pairs ) {
+        my $orig_value = $pairs{$name};
+
+        my $real_value = _is_sub_ref( $orig_value )
+            ? $orig_value
+            : sub { $orig_value };
+
+        my $original = $package->can( $name );
+        $self->{$name} ||= $original;
+        inject( $package, $name, $real_value );
+
+        push @originals, $original;
+    }
+
+    return @originals;
 }
 
 sub restore {
     my $self = shift;
-    my ( $name ) = @_;
-    my $original = $self->{$name};
 
-    if ( $original ) {
-        my $sub = _is_sub_ref( $original ) ? $original : sub { $original };
-        inject( $self->package, $name, $sub );
-    }
-    else {
-        $self->clear( $name );
+    for my $name ( @_ ) {
+        my $original = $self->{$name};
+
+        if ( $original ) {
+            my $sub = _is_sub_ref( $original ) ? $original : sub { $original };
+            inject( $self->package, $name, $sub );
+        }
+        else {
+            $self->clear( $name );
+        }
     }
 }
 
@@ -208,7 +219,13 @@ Provides class mocking for L<Mock::Quick>
 
 =head1 AUTHORS
 
-Chad Granum L<exodist7@gmail.com>
+=over 4
+
+=item Chad Granum L<exodist7@gmail.com>
+
+=item Glen Hinkle L<glen@empireenterprises.com>
+
+=back
 
 =head1 COPYRIGHT
 
