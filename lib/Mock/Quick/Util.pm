@@ -28,12 +28,26 @@ sub inject {
 
 sub call {
     my $self = shift;
+    require Mock::Quick::Object::Control;
+    my $control = Mock::Quick::Object::Control->new( $self );
     my $name = shift;
+
+    my $class = blessed( $self );
+    croak "Can't call method on an unblessed reference"
+        unless $class;
+
+    if ( $control->strict ) {
+        croak "Can't locate object method \"$name\" in this instance"
+            unless exists $self->{$name};
+    }
 
     if ( @_ && ref $_[0] && $_[0] == \$CLEAR ) {
         delete $self->{ $name };
+        delete $control->metrics->{$name};
         return;
     }
+
+    $control->metrics->{$name}++;
 
     return $self->{ $name }->( $self, @_ )
         if exists(  $self->{ $name })

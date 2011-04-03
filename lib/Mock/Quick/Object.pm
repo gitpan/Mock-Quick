@@ -3,6 +3,7 @@ use strict;
 use warnings;
 
 use Mock::Quick::Util;
+use Mock::Quick::Object::Control;
 use Carp ();
 use Scalar::Util ();
 
@@ -23,13 +24,21 @@ sub AUTOLOAD {
     Carp::croak "Can't locate object method \"$sub\" via package \"$package\""
         unless Scalar::Util::blessed( $self );
 
-    goto &{ $self->can( $sub )};
+    my $code = $self->can( $sub );
+    Carp::croak "Can't locate object method \"$sub\" in this instance"
+        unless $code;
+
+    goto &$code;
 };
 
 alt_meth can => (
     class => sub { no warnings 'misc'; goto &UNIVERSAL::can },
     obj => sub {
         my ( $self, $name ) = @_;
+
+        my $control = Mock::Quick::Object::Control->new( $self );
+        return if $control->strict && !exists $self->{$name};
+
         my $sub;
         {
             no warnings 'misc';
@@ -51,7 +60,9 @@ sub DOES    { goto &isa                                    }
 sub VERSION { no warnings 'misc'; goto &UNIVERSAL::VERSION }
 
 obj_meth DESTROY => sub {
-    unshift @_ => ( shift( @_ ), 'DESTROY' );
+    my $self = shift;
+    Mock::Quick::Object::Control->new( $self )->_clean;
+    unshift @_ => ( $self, 'DESTROY' );
     goto &call;
 };
 
