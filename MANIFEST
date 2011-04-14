@@ -4,6 +4,18 @@ lib/Mock/Quick/Class.pm
 lib/Mock/Quick/Method.pm
 lib/Mock/Quick/Object.pm
 lib/Mock/Quick/Object/Control.pm
+lib/Mock/Quick/Presentation.pod
+lib/Mock/Quick/Presentation/slideA.pod
+lib/Mock/Quick/Presentation/slideB.pod
+lib/Mock/Quick/Presentation/slideC.pod
+lib/Mock/Quick/Presentation/slideD.pod
+lib/Mock/Quick/Presentation/slideE.pod
+lib/Mock/Quick/Presentation/slideF.pod
+lib/Mock/Quick/Presentation/slideG.pod
+lib/Mock/Quick/Presentation/slideH.pod
+lib/Mock/Quick/Presentation/slideI.pod
+lib/Mock/Quick/Presentation/slideJ.pod
+lib/Mock/Quick/Presentation/slideK.pod
 lib/Mock/Quick/Util.pm
 lib/Object/Quick.pm
 MANIFEST			This list of files
