@@ -7,8 +7,9 @@ build_requires:
   Test::Exception: 0.29
   Test::Simple: 0.88
 configure_requires:
-  Module::Build: 0.36
-generated_by: 'Module::Build version 0.3607'
+  Module::Build: 0.38
+dynamic_config: 1
+generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.110440'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -17,19 +18,25 @@ name: Mock-Quick
 provides:
   Mock::Quick:
     file: lib/Mock/Quick.pm
-    version: 1.101
+    version: 1.102
   Mock::Quick::Class:
     file: lib/Mock/Quick/Class.pm
+    version: 0
   Mock::Quick::Method:
     file: lib/Mock/Quick/Method.pm
+    version: 0
   Mock::Quick::Object:
     file: lib/Mock/Quick/Object.pm
+    version: 0
   Mock::Quick::Object::Control:
     file: lib/Mock/Quick/Object/Control.pm
+    version: 0
   Mock::Quick::Util:
     file: lib/Mock/Quick/Util.pm
+    version: 0
   Object::Quick:
     file: lib/Object/Quick.pm
+    version: 0
 requires:
   Carp: 0
   Exporter::Declare: 0.103
@@ -39,4 +46,4 @@ resources:
   homepage: http://open-exodus.net/projects/Object-Quick
   license: http://dev.perl.org/licenses/
   repository: http://github.com/exodist/Object-Quick
-version: 1.101
+version: 1.102

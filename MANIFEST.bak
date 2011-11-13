@@ -10,6 +10,7 @@ MANIFEST			This list of files
 MANIFEST.bak
 MANIFEST.SKIP
 META.yml
+Mock-Quick-1.100.tar.gz
 README
 t/Class.t
 t/Method.t
@@ -19,4 +20,3 @@ t/Object-Quick.t
 t/Object.t
 t/object_control.t
 t/Util.t
-META.json
