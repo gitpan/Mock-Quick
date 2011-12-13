@@ -9,6 +9,7 @@ lib/Object/Quick.pm
 MANIFEST			This list of files
 MANIFEST.bak
 MANIFEST.SKIP
+META.json
 META.yml
 README
 t/Class.t
@@ -19,4 +20,3 @@ t/Object-Quick.t
 t/Object.t
 t/object_control.t
 t/Util.t
-META.json
