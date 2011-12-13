@@ -37,7 +37,7 @@
    "provides" : {
       "Mock::Quick" : {
          "file" : "lib/Mock/Quick.pm",
-         "version" : "1.103"
+         "version" : "1.104"
       },
       "Mock::Quick::Class" : {
          "file" : "lib/Mock/Quick/Class.pm",
@@ -77,5 +77,5 @@
          "url" : "http://github.com/exodist/Object-Quick"
       }
    },
-   "version" : "1.103"
+   "version" : "1.104"
 }
