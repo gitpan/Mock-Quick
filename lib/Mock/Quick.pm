@@ -9,7 +9,7 @@ use Mock::Quick::Method;
 use Mock::Quick::Util;
 use Carp qw/carp/;
 
-our $VERSION = '1.106';
+our $VERSION = '1.107';
 
 import_arguments qw/intercept/;
 
@@ -40,8 +40,8 @@ for my $operation ( keys %CLASS_RELATED ) {
             if defined wantarray;
 
         my $caller = caller;
-        return $caller->QINTERCEPT->(sub { Mock::Quick::Class->$meth(@args) })
-            if $caller->can( 'QINTERCEPT' );
+        return $caller->QINTERCEPT->( sub { Mock::Quick::Class->$meth(@args) } )
+            if $caller->can('QINTERCEPT');
 
         carp "Return value is ignored, your mock is destroyed as soon as it is created.";
     };
