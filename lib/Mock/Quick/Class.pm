@@ -4,8 +4,9 @@ use warnings;
 
 use Mock::Quick::Util;
 use Scalar::Util qw/blessed weaken/;
-use Carp qw/croak confess/;
+use Carp qw/croak confess carp/;
 
+our @CARP_NOT = ('Mock::Quick', 'Mock::Quick::Object');
 our $ANON = 'AAAAAAAAAA';
 
 sub package      { shift->{'-package'}  }
@@ -180,6 +181,9 @@ sub override {
     for my $name ( keys %pairs ) {
         my $orig_value = $pairs{$name};
 
+        carp "Overriding non-existent method '$name'"
+            if $self->is_takeover && !$package->can($name);
+
         my $real_value = _is_sub_ref( $orig_value )
             ? sub { $metrics->{$name}++; return $orig_value->(@_) }
             : sub { $metrics->{$name}++; return $orig_value };
@@ -330,7 +334,7 @@ You can also use the 'implement' method instead of new:
 
 This is if you just need to generate a class where the package name does not
 matter. This is done when the -takeover and -implement arguments are both
-ommited.
+omitted.
 
     use Mock::Quick::Class;
 
@@ -393,7 +397,7 @@ You can also do this through new()
 
 While the control object exists, it can be accessed via
 C<YOUR::PACKAGE->MQ_CONTROL()>. It is important to note that this method will
-dissapear whenever the control object you track falls out of scope.
+disappear whenever the control object you track falls out of scope.
 
 Example (taken from Class.t):
 
